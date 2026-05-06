@@ -8,7 +8,14 @@ const tsconfigRootDir = import.meta.dirname;
 export default [
     // ── 1. Global ignores ────────────────────────────────────────────────────
     {
-        ignores: ['dist/**', 'coverage/**', 'node_modules/**', 'eslint.config.js'],
+        ignores: [
+            'dist/**',
+            'coverage/**',
+            'node_modules/**',
+            'eslint.config.js',
+            '.nuxt/**',
+            'public/**',
+        ],
     },
 
     // ── 2. TypeScript — .ts files ────────────────────────────────────────────
@@ -20,9 +27,7 @@ export default [
         files: ['**/*.ts'],
         languageOptions: {
             parserOptions: {
-                projectService: {
-                    allowDefaultProject: ['*.config.ts', '*.config.js'],
-                },
+                projectService: true,
                 tsconfigRootDir,
             },
         },
