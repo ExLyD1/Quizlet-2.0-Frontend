@@ -17,10 +17,11 @@ const config: Config = {
             colors: {
                 // ── Backgrounds / Surfaces ──────────────────────────────────
                 bg: {
-                    base: '#111111',
-                    deep: '#202020',
+                    page:    '#2D1A28',
+                    base:    '#111111',
+                    deep:    '#202020',
                     surface: '#272727',
-                    muted: '#454545',
+                    muted:   '#454545',
                 },
                 // ── Brand (purple) ───────────────────────────────────────────
                 brand: {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-bg-page">
         <!-- ── 1. Hero ──────────────────────────────────────────────────────── -->
         <section class="flex min-h-screen flex-col items-center justify-center gap-6 bg-bg-base px-6 text-center">
             <h1 class="max-w-4xl text-[clamp(2.5rem,8vw,5rem)] font-bold uppercase leading-tight tracking-wide text-brand-light">
