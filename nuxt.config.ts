@@ -2,14 +2,18 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
 
-    css: ['~/assets/css/main.css'],
-
     modules: [
-        '@pinia/nuxt',
-        '@vueuse/nuxt',
-        '@nuxtjs/tailwindcss',
-        '@nuxtjs/i18n',
-        '@nuxt/image',
-        '@nuxtjs/color-mode',
+      '@pinia/nuxt',
+      '@vueuse/nuxt',
+      '@nuxtjs/i18n',
+      '@nuxt/image',
+      '@nuxtjs/color-mode',
+      '@nuxtjs/tailwindcss',
     ],
+
+    vite: {
+        optimizeDeps: {
+            include: ['@vue/devtools-core', '@vue/devtools-kit'],
+        },
+    },
 });
