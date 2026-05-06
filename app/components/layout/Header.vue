@@ -18,8 +18,8 @@
 
             <!-- Actions -->
             <div class="ml-auto flex items-center gap-2">
-                <UiButton variant="text" class="hidden sm:inline-flex">Login</UiButton>
-                <UiButton variant="ghost">Register</UiButton>
+                <UiButton variant="text" class="hidden sm:inline-flex" @click="navigateTo('/login')">Login</UiButton>
+                <UiButton variant="ghost" @click="navigateTo('/login')">Register</UiButton>
             </div>
         </div>
 
