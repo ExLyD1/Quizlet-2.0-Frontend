@@ -16,7 +16,7 @@ defineOptions({ inheritAttrs: false });
 
 withDefaults(
     defineProps<{
-        variant?: 'primary' | 'ghost' | 'light';
+        variant?: 'primary' | 'ghost' | 'light' | 'text';
         disabled?: boolean;
     }>(),
     { variant: 'primary', disabled: false },
@@ -26,5 +26,6 @@ const variants = {
     primary: 'bg-brand text-neutral-0 hover:bg-brand-dark',
     ghost:   'bg-bg-surface text-brand-muted hover:bg-bg-muted',
     light:   'bg-brand-light text-brand hover:bg-brand-pale',
+    text:    'text-brand-pale hover:text-brand-light',
 } as const;
 </script>
