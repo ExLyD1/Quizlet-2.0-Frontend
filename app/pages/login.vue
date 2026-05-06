@@ -96,7 +96,10 @@ import { Check, Eye, EyeOff } from 'lucide-vue-next';
 
 definePageMeta({ layout: 'auth' });
 
-const activeTab = ref<'register' | 'login'>('register');
+const route = useRoute();
+const activeTab = ref<'register' | 'login'>(
+    route.query.tab === 'login' ? 'login' : 'register',
+);
 const email = ref('');
 const password = ref('');
 const showPassword = ref(false);
