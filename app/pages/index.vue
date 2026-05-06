@@ -1,8 +1,12 @@
 <template>
-    <div class="bg-bg-page">
+    <div class="bg-bg-landing">
         <!-- ── 1. Hero ──────────────────────────────────────────────────────── -->
-        <section class="flex min-h-screen flex-col items-center justify-center gap-6 bg-bg-base px-6 text-center">
-            <h1 class="max-w-4xl text-[clamp(2.5rem,8vw,5rem)] font-bold uppercase leading-tight tracking-wide text-brand-light">
+        <section
+            class="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center"
+        >
+            <h1
+                class="max-w-4xl text-[clamp(2.5rem,8vw,5rem)] font-bold uppercase leading-tight tracking-wide text-brand-light"
+            >
                 Explore new ways
                 <span class="block text-[clamp(2rem,6vw,4rem)]">
                     of <strong>active recall</strong> studying
@@ -30,7 +34,9 @@
                         ]"
                     >
                         <template v-if="feature.small">
-                            <div class="size-8 rounded border-2 border-b-0 border-r-0 border-brand-muted" />
+                            <div
+                                class="size-8 rounded border-2 border-b-0 border-r-0 border-brand-muted"
+                            />
                         </template>
                         <template v-else>
                             <h3 class="mb-3 text-h3 text-neutral-0">{{ feature.title }}</h3>
@@ -52,7 +58,7 @@
         </section>
 
         <!-- ── 3. Smart Features ───────────────────────────────────────────── -->
-        <section class="bg-bg-deep px-6 py-20 lg:px-16">
+        <section class="px-6 py-20 lg:px-16">
             <div class="mx-auto max-w-screen-lg">
                 <div class="mb-16 text-center">
                     <h2 class="mb-3 text-h1 font-bold text-neutral-0">Smart features</h2>
@@ -64,7 +70,10 @@
                 <div class="flex flex-col items-center gap-10 lg:flex-row">
                     <!-- Arc selector -->
                     <div class="relative w-full shrink-0 lg:w-72">
-                        <svg viewBox="0 0 380 700" class="w-full max-w-xs overflow-visible lg:max-w-none">
+                        <svg
+                            viewBox="0 0 380 700"
+                            class="w-full max-w-xs overflow-visible lg:max-w-none"
+                        >
                             <g v-for="(seg, i) in arcSegments" :key="seg.label">
                                 <path
                                     :d="seg.path"
@@ -90,7 +99,9 @@
 
                     <!-- Feature card -->
                     <div class="flex flex-1 items-center justify-center">
-                        <div class="w-full max-w-md rounded-2xl border border-brand-muted p-10 text-center">
+                        <div
+                            class="w-full max-w-md rounded-2xl border border-brand-muted p-10 text-center"
+                        >
                             <h3 class="mb-3 text-h2 text-neutral-0">
                                 {{ smartFeatures[activeFeature]!.title }}
                             </h3>
@@ -138,7 +149,7 @@ const stripes = [
     { right: '38%', top: '-25%', background: '#8E7692', opacity: '0.25' },
     { right: '28%', top: '-25%', background: '#8E7692', opacity: '0.18' },
     { right: '18%', top: '-25%', background: '#CEB2BD', opacity: '0.15' },
-    { right: '8%',  top: '-25%', background: '#CEB2BD', opacity: '0.12' },
+    { right: '8%', top: '-25%', background: '#CEB2BD', opacity: '0.12' },
     { right: '-2%', top: '-25%', background: '#E2D2C8', opacity: '0.10' },
 ];
 
@@ -146,11 +157,31 @@ const stripes = [
 const activeFeature = ref(0);
 
 const smartFeatures = [
-    { title: 'Active Recall',     description: 'Test yourself instead of re-reading. Forces your brain to retrieve information and strengthens memory pathways.' },
-    { title: 'Spaced Repetition', description: 'Cards you struggle with appear more often. Cards you know well fade into the background. Study smarter, not longer.' },
-    { title: 'AI Generation',     description: 'Paste any text and let AI build a full deck in seconds — summaries, definitions, Q&A cards, all ready to study.' },
-    { title: 'Progress Tracking', description: 'See how your retention improves over time with clear stats per deck, topic, and session.' },
-    { title: 'Collaborative',     description: 'Share decks with classmates or study groups. Learn together and benefit from each other\'s knowledge.' },
+    {
+        title: 'Active Recall',
+        description:
+            'Test yourself instead of re-reading. Forces your brain to retrieve information and strengthens memory pathways.',
+    },
+    {
+        title: 'Spaced Repetition',
+        description:
+            'Cards you struggle with appear more often. Cards you know well fade into the background. Study smarter, not longer.',
+    },
+    {
+        title: 'AI Generation',
+        description:
+            'Paste any text and let AI build a full deck in seconds — summaries, definitions, Q&A cards, all ready to study.',
+    },
+    {
+        title: 'Progress Tracking',
+        description:
+            'See how your retention improves over time with clear stats per deck, topic, and session.',
+    },
+    {
+        title: 'Collaborative',
+        description:
+            "Share decks with classmates or study groups. Learn together and benefit from each other's knowledge.",
+    },
 ];
 
 function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
