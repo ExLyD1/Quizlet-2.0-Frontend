@@ -10,12 +10,13 @@
                         <img src="/images/logo.svg" alt="Mnemio" class="h-8" />
                     </NuxtLink>
                     <hr class="border-brand-muted" />
+                    <!-- App store badges: add /images/badge-appstore.svg and /images/badge-googleplay.svg to public/ to enable -->
                     <div class="flex flex-wrap gap-3">
-                        <a href="#" aria-label="Download on the App Store">
-                            <img src="/images/badge-appstore.svg" alt="App Store" class="h-10" />
+                        <a href="#" aria-label="Download on the App Store" class="flex h-10 items-center rounded-lg border border-brand-muted px-3 text-small text-brand-pale hover:border-brand-light transition-colors">
+                            App Store
                         </a>
-                        <a href="#" aria-label="Get it on Google Play">
-                            <img src="/images/badge-googleplay.svg" alt="Google Play" class="h-10" />
+                        <a href="#" aria-label="Get it on Google Play" class="flex h-10 items-center rounded-lg border border-brand-muted px-3 text-small text-brand-pale hover:border-brand-light transition-colors">
+                            Google Play
                         </a>
                     </div>
                 </div>

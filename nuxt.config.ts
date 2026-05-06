@@ -11,6 +11,13 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
     ],
 
+    i18n: {
+        defaultLocale: 'en',
+        locales: [{ code: 'en', language: 'en-US' }],
+    },
+
+    css: ['~/assets/css/main.css'],
+
     vite: {
         optimizeDeps: {
             include: ['@vue/devtools-core', '@vue/devtools-kit'],
