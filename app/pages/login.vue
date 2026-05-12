@@ -1,7 +1,12 @@
 <template>
     <div class="w-full max-w-md rounded-3xl bg-brand-dark p-8">
         <LoginAuthForm v-if="step === 'auth'" :initial-tab="initialTab" @submit="onAuthSubmit" />
-        <LoginRegisterEmail v-else-if="step === 'verify'" @submit="" :email="email" />
+        <LoginRegisterEmail
+            v-else-if="step === 'verify'"
+            @submit="onRegisterSubmit"
+            :email="data.email"
+        />
+        <LoginRegisterAcountDetails v-else-if="step === 'details'" />
 
         <p class="mt-5 text-center text-small text-brand-muted">
             By continuing I agree with the
@@ -19,14 +24,36 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'auth' });
 
+import { useProfileStore, useAuth } from '#imports';
+
 const route = useRoute();
 
-const step = ref<'auth' | 'verify'>('auth');
-const email = ref('');
+const { login, register } = useAuth();
+
+type Tab = 'register' | 'login' | 'registerAcountDetails';
+
+const step = ref<'auth' | 'verify' | 'details'>('auth');
+const data = reactive<{
+    email: string;
+    password: string;
+    activeTab: Tab;
+}>({
+    email: '',
+    password: '',
+    activeTab: 'register',
+});
 const initialTab = route.query.tab === 'login' ? 'login' : ('register' as const);
 
-function onAuthSubmit(payload: { email: string; activeTab: 'register' | 'login' }) {
-    email.value = payload.email;
+function onAuthSubmit(payload: { email: string; password: string; activeTab: Tab }) {
+    data.email = payload.email;
+    data.password = payload.password;
+    data.activeTab = payload.activeTab;
     if (payload.activeTab === 'register') step.value = 'verify';
+}
+
+async function onRegisterSubmit(payload: { email: string; password: string; code: string }) {
+    const response = await register(payload.email, payload.password);
+
+    step.value = 'details';
 }
 </script>

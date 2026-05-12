@@ -15,7 +15,7 @@
         </p>
 
         <UiButton
-            @click="$emit('submit', { email })"
+            @click="emit('submit', { email: 'qwe', password: 'qwe', code })"
             variant="light"
             class="w-full rounded-xl py-4 text-body font-bold"
         >
@@ -26,6 +26,10 @@
 
 <script setup lang="ts">
 const props = defineProps<{ email: string }>();
+
+const emit = defineEmits<{
+    submit: [payload: { email: string; password: string; code: string }];
+}>();
 
 const code = ref('');
 

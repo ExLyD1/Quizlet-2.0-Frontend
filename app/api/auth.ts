@@ -1,6 +1,6 @@
-export const login = async (email: string, password: string) => {
+export const login = async (email: string, password: string, accessToken: string) => {
     return {
-        token: 'mocked_token',
+        success: true,
         user: {
             id: 1,
             email,
@@ -10,7 +10,9 @@ export const login = async (email: string, password: string) => {
 
 export const register = async (email: string, password: string) => {
     return {
-        token: 'mocked_token',
+        accessToken: 'mocked_token',
+        refreshToken: 'mocked_refresh_token',
+        success: true,
         user: {
             id: 1,
             email,

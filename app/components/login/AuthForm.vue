@@ -52,7 +52,7 @@
             <UiButton
                 variant="light"
                 class="mt-[32px] w-full rounded-xl text-body font-bold"
-                @click="$emit('submit', { email, activeTab })"
+                @click="$emit('submit', { email, password, activeTab })"
             >
                 {{ activeTab === 'login' ? 'Log in' : 'Create account' }}
             </UiButton>
@@ -64,7 +64,7 @@
 import { Check } from 'lucide-vue-next';
 
 const props = defineProps<{ initialTab?: 'register' | 'login' }>();
-defineEmits<{ submit: [{ email: string; activeTab: 'register' | 'login' }] }>();
+defineEmits<{ submit: [{ email: string; password: string; activeTab: 'register' | 'login' }] }>();
 
 const activeTab = ref<'register' | 'login'>(props.initialTab ?? 'register');
 const email = ref('');
