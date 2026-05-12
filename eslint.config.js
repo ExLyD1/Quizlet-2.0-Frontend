@@ -1,8 +1,5 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import pluginVue from 'eslint-plugin-vue';
-import vueParser from 'vue-eslint-parser';
-import tailwindPlugin from 'eslint-plugin-tailwindcss';
 import prettierPlugin from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
@@ -12,14 +9,12 @@ export default [
     // ── 1. Global ignores ────────────────────────────────────────────────────
     {
         ignores: [
-            '.nuxt/**',
-            '.output/**',
             'dist/**',
             'coverage/**',
             'node_modules/**',
             'eslint.config.js',
-            'tailwind.config.ts',
-            'nuxt.config.ts',
+            '.nuxt/**',
+            'public/**',
         ],
     },
 
@@ -32,40 +27,15 @@ export default [
         files: ['**/*.ts'],
         languageOptions: {
             parserOptions: {
-                projectService: {
-                    allowDefaultProject: ['*.config.ts', '*.config.js'],
-                },
-                tsconfigRootDir,
-            },
-        },
-    },
-
-    // ── 3. Vue — recommended flat config ─────────────────────────────────────
-    ...pluginVue.configs['flat/recommended'],
-
-    // ── 4. Vue — TypeScript inside .vue files ────────────────────────────────
-    {
-        files: ['**/*.vue'],
-        plugins: { '@typescript-eslint': tsPlugin },
-        languageOptions: {
-            parser: vueParser,
-            parserOptions: {
-                parser: tsParser,
-                ecmaVersion: 'latest',
-                sourceType: 'module',
                 projectService: true,
                 tsconfigRootDir,
-                extraFileExtensions: ['.vue'],
             },
         },
     },
 
-    // ── 5. Tailwind ──────────────────────────────────────────────────────────
-    ...tailwindPlugin.configs['flat/recommended'],
-
-    // ── 6. All files — Prettier + project rules ───────────────────────────────
+    // ── 3. All files — Prettier + project rules ───────────────────────────────
     {
-        files: ['**/*.{js,ts,vue}'],
+        files: ['**/*.{js,ts}'],
         plugins: {
             '@typescript-eslint': tsPlugin,
             prettier: prettierPlugin,
@@ -77,7 +47,7 @@ export default [
             'prefer-arrow-callback': 'off',
 
             // ── General ──────────────────────────────────────────────────────
-            'no-console': 'error',
+            'no-console': 'off',
             'no-debugger': 'error',
             'no-var': 'error',
             'prefer-const': 'error',
@@ -97,11 +67,14 @@ export default [
         },
     },
 
-    // ── 8. TypeScript + Vue — type-aware rules ───────────────────────────────
+    // ── 4. TypeScript — type-aware rules ─────────────────────────────────────
     {
-        files: ['**/*.{ts,vue}'],
+        files: ['**/*.ts'],
         plugins: {
             '@typescript-eslint': tsPlugin,
+        },
+        languageOptions: {
+            parser: tsParser,
         },
         rules: {
             '@typescript-eslint/no-unused-vars': [
@@ -131,21 +104,6 @@ export default [
             '@typescript-eslint/restrict-template-expressions': 'error',
             '@typescript-eslint/only-throw-error': 'error',
             '@typescript-eslint/consistent-type-imports': 'error',
-
-            // ── Vue ──────────────────────────────────────────────────────────
-            'vue/component-api-style': ['error', ['script-setup', 'composition']],
-            'vue/no-mutating-props': 'error',
-            'vue/no-use-v-if-with-v-for': 'error',
-            'vue/no-setup-props-reactivity-loss': 'error',
-            'vue/no-ref-as-operand': 'error',
-            'vue/no-unused-vars': 'error',
-
-            // ── Tailwind ─────────────────────────────────────────────────────
-            'tailwindcss/classnames-order': 'error',
-            'tailwindcss/enforces-shorthand': 'error',
-            'tailwindcss/no-contradicting-classname': 'error',
-            'tailwindcss/no-unnecessary-arbitrary-value': 'error',
-            'tailwindcss/no-custom-classname': 'error',
         },
     },
 ];
